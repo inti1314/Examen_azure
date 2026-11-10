@@ -30,6 +30,9 @@
 				},
 				{
 					"name": "derivedColumn2"
+				},
+				{
+					"name": "derivedColumn3"
 				}
 			],
 			"scriptLines": [
@@ -44,7 +47,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 derive(icd_code = split(upper(regexReplace(toString(icd_code), '[ ]', '')), ',')) ~> derivedColumn1",
-				"derivedColumn1 derive(severity = case(lower(trim(severity)) == 'mild', 'Mild',      lower(trim(severity)) == 'moderate', 'Moderate',      lower(trim(severity)) == 'severe', 'Severe',      lower(trim(severity)) == 'critical', 'Critical',      toString(null()))) ~> derivedColumn2",
+				"derivedColumn3 derive(severity = case(lower(trim(severity)) == 'mild', 'Mild',      lower(trim(severity)) == 'moderate', 'Moderate',      lower(trim(severity)) == 'severe', 'Severe',      lower(trim(severity)) == 'critical', 'Critical',      toString(null()))) ~> derivedColumn2",
+				"derivedColumn1 derive(icd_list = split(upper(regexReplace(toString(icd_code), '[ ]', '')), ',')) ~> derivedColumn3",
 				"derivedColumn2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
