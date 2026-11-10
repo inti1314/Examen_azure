@@ -64,7 +64,7 @@
 				"derivedColumn2 derive(phone = regexReplace(phone, '[^0-9]', '')) ~> derivedColumn4",
 				"derivedColumn4 derive(email = lower(replace(email, ',', '.'))) ~> derivedColumn5",
 				"derivedColumn5 derive(insurance_provider = coalesce(insurance_provider, 'Unknown')) ~> derivedColumn6",
-				"derivedColumn6 derive(date_of_birth = toDate(date_of_birth, 'yyyy-MM-dd')) ~> derivedColumn7",
+				"derivedColumn6 derive(date_of_birth = toDate(date_of_birth, 'dd/MM/yyyy')) ~> derivedColumn7",
 				"derivedColumn7 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
